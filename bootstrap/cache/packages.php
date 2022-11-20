@@ -6,6 +6,13 @@
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
+  'ibex/crud-generator' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Ibex\\CrudGenerator\\CrudServiceProvider',
+    ),
+  ),
   'jenssegers/agent' => 
   array (
     'providers' => 
@@ -50,6 +57,18 @@
     'providers' => 
     array (
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
+  'laravelcollective/html' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Collective\\Html\\HtmlServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Form' => 'Collective\\Html\\FormFacade',
+      'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
   'livewire/livewire' => 
