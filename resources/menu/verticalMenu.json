@@ -6,11 +6,30 @@
       "icon": "menu-icon tf-icons bx bx-home-circle",
       "slug": "pages-home"
     },
+    
     {
-      "url": "/page-2",
-      "icon": "menu-icon tf-icons bx bx-file",
-      "name": "Page 2",
-      "slug": "pages-page-2"
+      "url": "/bodegas",
+      "icon": "menu-icon tf-icons bx bxs-factory",
+      "name": "Bodegas",
+      "slug": "pages-bodegas"
+    },
+    {
+      "url": "/productos",
+      "icon": "menu-icon tf-icons bx bx-package",
+      "name": "Producctos",
+      "slug": "pages-producto"
+    },
+    {
+      "url": "/inventarios",
+      "icon": "menu-icon tf-icons bx bx-paste",
+      "name": "Inventarios",
+      "slug": "pages-inventarios"
+    },
+    {
+      "url": "/hitoriale",
+      "icon": "menu-icon tf-icons bx bx-list-ol",
+      "name": "Hitoriales",
+      "slug": "pages-hitoriale"
     }
   ]
 }

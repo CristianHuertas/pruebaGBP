@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@php
+$configData = Helper::appClasses();
+@endphp
 
-@section('template_title')
-    Bodega
-@endsection
+@extends('layouts/layoutMaster')
+
+@section('title', 'Bodegas')
 
 @section('content')
+{{-- {{ $usuarios }} --}}
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -48,7 +51,7 @@
                                 <tbody>
                                     @foreach ($bodegas as $bodega)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $bodega->id }}</td>
                                             
 											<td>{{ $bodega->nombre }}</td>
 											<td>{{ $bodega->id_responsable }}</td>
@@ -72,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $bodegas->links() !!}
+                {{-- {!! $bodegas->links() !!} --}}
             </div>
         </div>
     </div>

@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@php
+    $configData = Helper::appClasses();
+@endphp
 
-@section('template_title')
-    Producto
-@endsection
+@extends('layouts/layoutMaster')
+
+@section('title', 'Productos')
 
 @section('content')
     <div class="container-fluid">
@@ -16,11 +18,12 @@
                                 {{ __('Producto') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                            <div class="float-right">
+                                <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Create New') }}
                                 </a>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -35,34 +38,58 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
-										<th>Nombre</th>
-										<th>Descripcion</th>
-										<th>Estado</th>
-										<th>Created By</th>
-										<th>Updated By</th>
+
+                                        <th>Nombre</th>
+                                        <th>Descripcion</th>
+                                        <th>Total en bodegas</th>
+                                        <th>Estado</th>
+                                        <th>Created By</th>
+                                        <th>Updated By</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach ($productos as $producto)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $producto->nombre }}</td>
-											<td>{{ $producto->descripcion }}</td>
-											<td>{{ $producto->estado }}</td>
-											<td>{{ $producto->created_by }}</td>
-											<td>{{ $producto->updated_by }}</td>
+                                            <td>{{ $producto->id }}</td>
+
+                                            <td>{{ $producto->nombre }}</td>
+                                            <td>{{ $producto->descripcion }}</td>
+                                            <td>
+                                                @php
+                                                    $totalProductosInventario = 0;
+                                                    
+                                                @endphp
+
+                                                @foreach ($inventarios as $item2)
+                                                    @if ($item2->id_producto == $producto->id)
+                                                        @php
+                                                            $totalProductosInventario = $totalProductosInventario + $item2->cantidad;
+                                                        @endphp
+                                                    @endif
+                                                @endforeach
+                                                {{ $totalProductosInventario }}
+
+                                            </td>
+                                            <td>{{ $producto->estado }}</td>
+                                            <td>{{ $producto->created_by }}</td>
+                                            <td>{{ $producto->updated_by }}</td>
 
                                             <td>
-                                                <form action="{{ route('productos.destroy',$producto->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('productos.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('productos.edit',$producto->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('productos.destroy', $producto->id) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-primary "
+                                                        href="{{ route('productos.show', $producto->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success"
+                                                        href="{{ route('productos.edit', $producto->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -72,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $productos->links() !!}
+                {{-- {!! $productos->links() !!} --}}
             </div>
         </div>
     </div>

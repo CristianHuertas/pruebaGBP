@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventario;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::paginate();
+        $productos = Producto::all();
+        $inventarios= Inventario::all();
 
-        return view('producto.index', compact('productos'))
-            ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
+        return view('producto.index', compact('productos', 'inventarios'));
+            // ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
     }
 
     /**

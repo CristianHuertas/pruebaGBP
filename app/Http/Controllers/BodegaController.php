@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bodega;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class BodegaController
@@ -18,10 +20,14 @@ class BodegaController extends Controller
      */
     public function index()
     {
-        $bodegas = Bodega::paginate();
-
-        return view('bodega.index', compact('bodegas'))
-            ->with('i', (request()->input('page', 1) - 1) * $bodegas->perPage());
+        // $bodegas = Bodega::paginate();
+        $bodegas = DB::table('bodegas')
+            ->orderBy('nombre', 'desc')
+            ->get();
+        // $usuarios = Usuario::all();
+        // dd($usuarios);
+        return view('bodega.index', compact('bodegas'));
+        // ->with('i', (request()->input('page', 1) - 1) * $bodegas->perPage());
     }
 
     /**
@@ -32,7 +38,9 @@ class BodegaController extends Controller
     public function create()
     {
         $bodega = new Bodega();
-        return view('bodega.create', compact('bodega'));
+        $usuarios = Usuario::all();
+
+        return view('bodega.create', compact('bodega', 'usuarios'));
     }
 
     /**

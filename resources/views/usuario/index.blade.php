@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@php
+$configData = Helper::appClasses();
+@endphp
 
-@section('template_title')
-    Usuario
-@endsection
+@extends('layouts/layoutMaster')
+
+@section('title', 'Usuarios')
 
 @section('content')
     <div class="container-fluid">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,14 +18,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id_producto
  *
  * @property Bodega $bodega
- * @property Historiale[] $historiales
+ * @property Historiale $historiales
  * @property Producto $producto
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Inventario extends Model
 {
-    
+    use HasFactory;
     static $rules = [
     ];
 

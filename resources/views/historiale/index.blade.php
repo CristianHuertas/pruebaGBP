@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@php
+$configData = Helper::appClasses();
+@endphp
 
-@section('template_title')
-    Historiale
-@endsection
+@extends('layouts/layoutMaster')
+
+@section('title', 'Bodegas')
 
 @section('content')
     <div class="container-fluid">
@@ -17,7 +19,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('historiales.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                {{-- <a href="{{ route('historiale.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left"> --}}
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -59,13 +61,13 @@
 											<td>{{ $historiale->id_inventario }}</td>
 
                                             <td>
-                                                <form action="{{ route('historiales.destroy',$historiale->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('historiales.show',$historiale->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('historiales.edit',$historiale->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                               {{--  <form action="{{ route('historiale.destroy',$historiale->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('historiale.show',$historiale->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('historiale.edit',$historiale->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach

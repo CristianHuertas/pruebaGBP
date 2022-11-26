@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@php
+$configData = Helper::appClasses();
+@endphp
 
-@section('template_title')
-    Inventario
-@endsection
+@extends('layouts/layoutMaster')
+
+@section('title', 'Invertario')
 
 @section('content')
     <div class="container-fluid">
@@ -34,13 +36,13 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
-										<th>Id Bodega</th>
+                                        <th>Id</th>
+										<th>Producto</th>
 										<th>Cantidad</th>
+                                        
+										<th>Bodega</th>
 										<th>Created By</th>
 										<th>Updated By</th>
-										<th>Id Producto</th>
 
                                         <th></th>
                                     </tr>
@@ -48,13 +50,13 @@
                                 <tbody>
                                     @foreach ($inventarios as $inventario)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $inventario->id_bodega }}</td>
+                                            <td>{{ $inventario->id }}</td>
+											<td>{{ $inventario->Producto->nombre }}</td>
 											<td>{{ $inventario->cantidad }}</td>
-											<td>{{ $inventario->created_by }}</td>
+                                            
+											<td>{{ $inventario->Bodega->nombre }}</td>
+											<td>{{ $inventario->Bodega->Usuario->nombre }}</td>
 											<td>{{ $inventario->updated_by }}</td>
-											<td>{{ $inventario->id_producto }}</td>
 
                                             <td>
                                                 <form action="{{ route('inventarios.destroy',$inventario->id) }}" method="POST">

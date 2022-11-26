@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -16,13 +17,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property Bodega[] $bodegas
+ * @property Bodega $bodegas
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Usuario extends Model
 {
-    
+  use HasFactory;
     static $rules = [
 		'nombre' => 'required',
 		'estado' => 'required',

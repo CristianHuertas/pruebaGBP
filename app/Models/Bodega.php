@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -16,16 +17,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property Historiale[] $historiales
- * @property Historiale[] $historiales
- * @property Inventario[] $inventarios
+ * @property Historiale $historiales
+ * @property Historiale $historiales
+ * @property Inventario $inventarios
  * @property Usuario $usuario
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Bodega extends Model
 {
-    
+    use HasFactory;
     static $rules = [
 		'nombre' => 'required',
 		'estado' => 'required',
@@ -52,10 +53,10 @@ class Bodega extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function historiales()
+   /*  public function historiales()
     {
         return $this->hasMany('App\Models\Historiale', 'id_bodega_origen', 'id');
-    }
+    } */
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

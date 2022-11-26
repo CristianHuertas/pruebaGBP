@@ -1,21 +1,33 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
-            {{ Form::label('nombre') }}
-            {{ Form::text('nombre', $bodega->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {{ Form::label('Nombre') }}
+            {{ Form::text('nombre', $bodega->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre', 'required']) }}
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+
+        <div>
+            <label for="">Resposable Bodega</label>
+            {{-- <select class="form-select" aria-label="Default select example"> --}}
+                <select name="type_id" class="form-select" 
+                    @foreach ($usuarios as $item)
+                        <option value="{{ $item->id }}">{{ $item->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+
+        </div>
+        {{-- <div class="form-group">
             {{ Form::label('id_responsable') }}
             {{ Form::text('id_responsable', $bodega->id_responsable, ['class' => 'form-control' . ($errors->has('id_responsable') ? ' is-invalid' : ''), 'placeholder' => 'Id Responsable']) }}
             {!! $errors->first('id_responsable', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
+        </div> --}}
+       {{--  <div class="form-group">
             {{ Form::label('estado') }}
             {{ Form::text('estado', $bodega->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
             {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div> --}}
         <div class="form-group">
             {{ Form::label('created_by') }}
             {{ Form::text('created_by', $bodega->created_by, ['class' => 'form-control' . ($errors->has('created_by') ? ' is-invalid' : ''), 'placeholder' => 'Created By']) }}

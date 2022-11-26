@@ -1,8 +1,11 @@
-@extends('layouts.app')
+@php
+$configData = Helper::appClasses();
+@endphp
 
-@section('template_title')
-    Create Inventario
-@endsection
+@extends('layouts/layoutMaster')
+
+@section('title', 'Crear Invertario')
+
 
 @section('content')
     <section class="content container-fluid">

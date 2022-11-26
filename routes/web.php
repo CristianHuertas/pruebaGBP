@@ -30,5 +30,11 @@ $controller_path = 'App\Http\Controllers';
     Route::get('/', $controller_path . '\pages\HomePage@index')->name('pages-home');
     Route::get('/page-2', $controller_path . '\pages\Page2@index')->name('pages-page-2');
 
+    Route::resource('usuarios', \App\Http\Controllers\UsuarioController::class);
+    Route::resource('bodegas', \App\Http\Controllers\BodegaController::class);
+    Route::resource('productos', \App\Http\Controllers\ProductoController::class);
+    Route::resource('hitoriale', \App\Http\Controllers\HistorialeController::class);
+    Route::resource('inventarios', \App\Http\Controllers\InventarioController::class);
+
     
 });

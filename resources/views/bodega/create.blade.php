@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@php
+$configData = Helper::appClasses();
+@endphp
 
-@section('template_title')
-    Create Bodega
-@endsection
+@extends('layouts/layoutMaster')
+
+@section('title', 'Crear Bodega')
 
 @section('content')
     <section class="content container-fluid">
